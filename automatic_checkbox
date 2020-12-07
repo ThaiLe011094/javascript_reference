@@ -1,0 +1,21 @@
+# purpose of this is for checking if a value presents in database then get box checked automatically
+# test_checklist is a list gotten from database to check with all existing value in that field in another database
+# if the some of the value in "tests" match the test_checklist, the boxes hold their values will be checked 
+
+<div class="checkbox">
+	<label>camera <font color="red">(*)</font></label>
+        	<div name="testId" id="testId">
+                	{% for item in tests %}
+                        	{% if item.id in test_checklist %}
+                                	<input type="checkbox" name="testId" value="{{item.id}}" checked>
+                                        <label for="{{item.name}}">{{item.id}}. {{item.name}}</label><br>
+				{% endif %}
+                                {% if item.id not in test_checklist %}
+                                	<input type="checkbox" name="testId" value="{{item.id}}">
+                                        <label for="{{item.name}}">{{item.id}}. {{item.name}}</label><br>
+				{% endif %}
+			{% endfor %}
+		</div>
+</div>
+
+# why not using Radio button? because we need many different values at the same time to parse to form request
