@@ -1,0 +1,38 @@
+# purpose of this file is for automatically changing the value after the method onchange() 
+# and to manipulate the list variable parse from python file to javascript
+
+function loadId()
+{
+    console.log("{{ devs[0]['line'] }}");
+    {#var x = document.getElementById("testId").value;#}
+    {#console.log(x);#}
+    {#x = {{ devs[0]['line'] }};#}
+    var ser = document.getElementById("line").value;
+    console.log("this is gotten from line field:", ser)
+    {#console.log("{{ devs}}"&slice(0)&"{{['line'] }}")#}
+    tem = "{{ devs }}";
+    tem = tem.split("&#39;")
+    console.log(tem);
+    console.log("search for index of test_id", tem.indexOf('test_id'));
+    console.log("search for index of test_place", tem.indexOf('test_place'));
+    console.log('id', tem[29]);
+    console.log(tem.length);
+    var i;
+    var j;
+    {#var templine = ;#}
+    {#console.log(templine);#}
+    for (i=0; i<tem.length; i++)
+    {
+        if (ser == tem[i]) {
+            j = i;
+        }
+    }
+    console.log(j);
+    document.getElementById('testId').setAttribute("value", tem[j+8]);
+    document.getElementById('testplace').setAttribute("value", tem[j+4]);
+    document.getElementById('testName').setAttribute("value", tem[j-4]);
+    document.getElementById('title').setAttribute("value", tem[j-6]);
+    document.getElementById('status').setAttribute("value", tem[j+12]);
+    document.getElementById('box').setAttribute("value", tem[j+16]);
+    document.getElementById('author').setAttribute("value", tem[j+20]);
+}
